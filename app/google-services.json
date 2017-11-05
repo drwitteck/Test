@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "207917113009",
+    "firebase_url": "https://lookowlt-5ed86.firebaseio.com",
+    "project_id": "lookowlt-5ed86",
+    "storage_bucket": "lookowlt-5ed86.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207917113009:android:a11909daa5b96019",
+        "android_client_info": {
+          "package_name": "com.theshulmonies.lookowlt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "207917113009-pu7oake6dck4lq4pdb2hnd9lg3hp4i78.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.theshulmonies.lookowlt",
+            "certificate_hash": "5e6cc5f98539c44fcffefde8470300603999c72f"
+          }
+        },
+        {
+          "client_id": "207917113009-q53266uib2epe4la032vs93ii6ho1455.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClLDtJL_3TPDz7RVvyBIyu9i6XAZmsOIo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "207917113009-q53266uib2epe4la032vs93ii6ho1455.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

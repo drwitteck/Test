@@ -9,5 +9,5 @@ public interface Reportable {
     public void userUpVote();
 
     //a reportable object has the ability to be "down voted"
-    public void usDownVote();
+    public void userDownVote();
 }

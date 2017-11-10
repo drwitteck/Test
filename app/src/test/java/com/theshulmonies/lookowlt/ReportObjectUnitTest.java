@@ -10,7 +10,15 @@ import static org.junit.Assert.*;
  */
 
 public class ReportObjectUnitTest {
-    public ReportObjectUnitTest() {
-        super();
+    Reportable eventsReport;
+
+    public void setup(){
+        eventsReport = new EventsReport();
+    }
+
+    @Test
+    public void shouldDecrementCredibilityScore(){
+        eventsReport.userDownVote();
+        assertEquals(0,eventsReport.getCredibitlyScore());
     }
 }

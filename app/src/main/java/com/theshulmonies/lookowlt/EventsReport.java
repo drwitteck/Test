@@ -11,7 +11,7 @@ public class EventsReport implements Reportable {
     }
 
     @Override
-    public void usDownVote() {
+    public void userDownVote() {
 
     }
 }

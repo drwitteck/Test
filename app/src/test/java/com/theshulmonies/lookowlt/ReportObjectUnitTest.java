@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
  */
 
 public class ReportObjectUnitTest {
-    Reportable eventsReport;
+    EventsReport eventsReport;
 
     public void setup(){
         eventsReport = new EventsReport();

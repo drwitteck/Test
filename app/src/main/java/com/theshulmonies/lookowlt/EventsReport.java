@@ -14,4 +14,8 @@ public class EventsReport implements Reportable {
     public void userDownVote() {
 
     }
+
+    public int getCredibitlyScore(){
+        return 0;
+    }
 }

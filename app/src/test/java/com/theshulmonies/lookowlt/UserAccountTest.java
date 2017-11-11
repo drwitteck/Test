@@ -11,6 +11,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertTrue;
 
 /**
  * Created by phil on 11/10/17.
@@ -33,15 +35,13 @@ public class UserAccountTest {
     @Test
     public void correctEmailFormatValidatorTest() {
         mUserAccount.setEmailAddress("phil@temple.edu");
-        assertEquals("Valid Temple email: ", true,
-                utility.isValidEmail(mUserAccount.getEmailAddress()));
+        assertTrue(utility.isValidEmail(mUserAccount.getEmailAddress()));
     }
 
     @Test
     public void incorrectEmailFormatValidatorTest() {
         mUserAccount.setEmailAddress("phil@google.com");
-        assertEquals("Invalid Temple email: ", false,
-                utility.isValidEmail(mUserAccount.getEmailAddress()));
+        assertFalse(utility.isValidEmail(mUserAccount.getEmailAddress()));
     }
 
     @Test
@@ -56,6 +56,19 @@ public class UserAccountTest {
         mUserAccount.setPassword("Password1!");
         assertEquals("Valid Password Test: ", true,
                 utility.isValidPassword(mUserAccount.getPassword()));
+    }
+
+    @Test
+    public void testForInvalidPassword() {
+        mUserAccount.setPassword("Fail!");
+        assertFalse(utility.isValidPassword(mUserAccount.getPassword()));
+    }
+
+    @Test
+    public void testForEmptyPassword() {
+        // Test that the method will return null if no password is given
+        mUserAccount.setPassword("");
+        assertFalse(utility.isValidPassword(mUserAccount.getPassword()));
     }
 
     @After

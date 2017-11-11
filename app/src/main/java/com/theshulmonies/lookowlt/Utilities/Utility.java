@@ -25,10 +25,28 @@ public class Utility {
     }
 
     /*
-     * At least 8 characters
-     * A password must contain at least 1 digit
+     * Between 6 and 21 characters
+     * A password must contain at least 1 digit and 1 special character
      */
     public boolean isValidPassword(String password) {
-        return true;
+        boolean special = false, digit = false, upperCase = false, lowerCase = false;
+
+        if (password != null && password.length() > 5 && password.length() < 21) {
+            for (int index = 0; index < password.length(); index++) {
+                final Character character = password.charAt(index);
+
+                if (Character.isWhitespace(character))
+                    return false;
+                else if (Character.isLowerCase(character))
+                    lowerCase = true;
+                else if (Character.isUpperCase(character))
+                    upperCase = true;
+                else if (Character.isDigit(character))
+                    digit = true;
+                else if (33 <= character.charValue() && 127 >= character.charValue())
+                    special = true;
+            }
+        }
+        return special && digit && upperCase && lowerCase;
     }
 }

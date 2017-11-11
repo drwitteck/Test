@@ -32,13 +32,13 @@ public class UserAccountTest {
     @Test
     public void correctEmailFormatValidatorTest() {
         mUserAccount.setEmailAddress("phil@temple.edu");
-        assertEquals("Email valid test: ", true, utility.isValidEmail(mUserAccount.getEmailAddress()));
+        assertEquals("Valid Temple email: ", true, utility.isValidEmail(mUserAccount.getEmailAddress()));
     }
 
     @Test
     public void incorrectEmailFormatValidatorTest() {
         mUserAccount.setEmailAddress("phil@google.com");
-        assertEquals("Email valid test: ", false, utility.isValidEmail(mUserAccount.getEmailAddress()));
+        assertEquals("Invalid Temple email: ", false, utility.isValidEmail(mUserAccount.getEmailAddress()));
     }
 
     @Test

@@ -8,8 +8,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotSame;
 import static junit.framework.Assert.assertTrue;
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -27,14 +29,25 @@ public class UserAccountTest {
         utility = new Utility();
     }
 
-
     @Test
     public void correctEmailFormatValidatorTest() {
-        assertEquals("Email valid test: ", utility.isValidEmail("phil@temple.edu"), true);
+        mUserAccount.setEmailAddress("phil@temple.edu");
+        assertEquals("Email valid test: ", true, utility.isValidEmail(mUserAccount.getEmailAddress()));
+    }
+
+    @Test
+    public void incorrectEmailFormatValidatorTest() {
+        mUserAccount.setEmailAddress("phil@google.com");
+        assertEquals("Email valid test: ", false, utility.isValidEmail(mUserAccount.getEmailAddress()));
+    }
+
+    @Test
+    public void testForEduEmail() {
+        mUserAccount.setEmailAddress("phil@temple.com");
+        assertEquals("Email valid test: ", false, utility.isValidEmail(mUserAccount.getEmailAddress()));
     }
 
     @After
     public void tearDown() throws Exception {
-
     }
 }

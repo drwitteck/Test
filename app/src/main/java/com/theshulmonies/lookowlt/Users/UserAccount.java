@@ -81,11 +81,12 @@ public class UserAccount implements User {
     // Verifies the user is able to login/out successfully into
     @Override
     public void login() {
+        // Use FirebaseUtility to sign the user in
 
     }
 
     @Override
     public void logout() {
-
+        // Use FirebaseUtility to sign the user out
     }
 }

@@ -47,15 +47,13 @@ public class UserAccountTest {
     @Test
     public void testForEduEmail() {
         mUserAccount.setEmailAddress("phil@temple.com");
-        assertEquals("Email valid test: ", false,
-                utility.isValidEmail(mUserAccount.getEmailAddress()));
+        assertFalse(utility.isValidEmail(mUserAccount.getEmailAddress()));
     }
 
     @Test
     public void testForValidPassword() {
         mUserAccount.setPassword("Password1!");
-        assertEquals("Valid Password Test: ", true,
-                utility.isValidPassword(mUserAccount.getPassword()));
+        assertTrue(utility.isValidPassword(mUserAccount.getPassword()));
     }
 
     @Test

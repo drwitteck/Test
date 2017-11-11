@@ -13,8 +13,6 @@ public class Utility {
 
     Context mContext;
 
-    public Utility(){}
-
     public Utility(Context context) {
         mContext = context;
     }
@@ -24,5 +22,13 @@ public class Utility {
         Pattern pattern = Pattern.compile(EMAIL_PATTERN);
         Matcher matcher = pattern.matcher(emailAddress);
         return matcher.matches();
+    }
+
+    /*
+     * At least 8 characters
+     * A password must contain at least 1 digit
+     */
+    public boolean isValidPassword(String password) {
+        return true;
     }
 }

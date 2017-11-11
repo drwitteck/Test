@@ -1,6 +1,9 @@
 package com.theshulmonies.lookowlt;
 
+import android.content.Context;
+
 import com.theshulmonies.lookowlt.Users.UserAccount;
+import com.theshulmonies.lookowlt.Utilities.FirebaseUtility;
 import com.theshulmonies.lookowlt.Utilities.Utility;
 
 import org.junit.After;
@@ -17,11 +20,14 @@ public class UserAccountTest {
 
     UserAccount mUserAccount;
     Utility utility;
+    FirebaseUtility firebaseUtility;
+    Context context;
 
     @Before
     public void setUp() throws Exception {
         mUserAccount = new UserAccount();
-        utility = new Utility();
+        utility = new Utility(context);
+        //firebaseUtility = new FirebaseUtility(context);
     }
 
     @Test
@@ -41,7 +47,15 @@ public class UserAccountTest {
     @Test
     public void testForEduEmail() {
         mUserAccount.setEmailAddress("phil@temple.com");
-        assertEquals("Email valid test: ", false, utility.isValidEmail(mUserAccount.getEmailAddress()));
+        assertEquals("Email valid test: ", false,
+                utility.isValidEmail(mUserAccount.getEmailAddress()));
+    }
+
+    @Test
+    public void testForValidPassword() {
+        mUserAccount.setPassword("Password1!");
+        assertEquals("Valid Password Test: ", true,
+                utility.isValidPassword(mUserAccount.getPassword()));
     }
 
     @After

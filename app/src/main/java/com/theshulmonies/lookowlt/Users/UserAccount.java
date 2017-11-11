@@ -16,6 +16,7 @@ public class UserAccount implements User {
     private String mFirstName;
     private String mLastName;
     private String mUserName;
+    private String mPassword;
 
     // Keepin' track of dem h4tez0rz
     private int mReliabilityScore;
@@ -23,11 +24,13 @@ public class UserAccount implements User {
 
     public UserAccount() {}
 
-    public UserAccount(String emailAddress, String firstName, String lastName, String userName) {
+    public UserAccount(String emailAddress, String firstName,
+                       String lastName, String userName, String password) {
         mEmailAddress = emailAddress;
         mFirstName = firstName;
         mLastName = lastName;
         mUserName = userName;
+        mPassword = password;
     }
 
     public String getEmailAddress() {
@@ -62,6 +65,14 @@ public class UserAccount implements User {
         mUserName = userName;
     }
 
+    public String getPassword() {
+        return mPassword;
+    }
+
+    public void setPassword(String password) {
+        mPassword = password;
+    }
+
     public int getReliabilityScore() {
         return mReliabilityScore;
     }
@@ -82,7 +93,6 @@ public class UserAccount implements User {
     @Override
     public void login() {
         // Use FirebaseUtility to sign the user in
-
     }
 
     @Override

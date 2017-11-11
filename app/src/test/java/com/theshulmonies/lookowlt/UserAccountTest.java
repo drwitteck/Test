@@ -1,6 +1,7 @@
 package com.theshulmonies.lookowlt;
 
 import com.theshulmonies.lookowlt.Users.UserAccount;
+import com.theshulmonies.lookowlt.Utilities.Utility;
 
 import org.junit.After;
 import org.junit.Before;
@@ -18,16 +19,18 @@ import static org.junit.Assert.assertThat;
 public class UserAccountTest {
 
     UserAccount mUserAccount;
+    Utility utility;
 
     @Before
     public void setUp() throws Exception {
         mUserAccount = new UserAccount();
+        utility = new Utility();
     }
 
 
     @Test
     public void correctEmailFormatValidatorTest() {
-        assertEquals("Email valid test: ", mUserAccount.isValidEmail("phil@temple.edu"), true);
+        assertEquals("Email valid test: ", utility.isValidEmail("phil@temple.edu"), true);
     }
 
     @After

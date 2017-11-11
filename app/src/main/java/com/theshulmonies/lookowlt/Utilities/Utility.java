@@ -6,7 +6,10 @@ package com.theshulmonies.lookowlt.Utilities;
 
 public class Utility {
 
+    public boolean isValidEmail(String emailAddress) {
 
 
+        return true;
+    }
 
 }

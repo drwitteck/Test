@@ -9,7 +9,7 @@ import com.theshulmonies.lookowlt.Utilities.FirebaseUtility;
 public class UserAccount implements User {
 
     // Get all the cool Firebase stuff
-    FirebaseUtility mFirebaseUtility;
+    FirebaseUtility firebaseUtility;
 
     // Typical chill info
     private String mEmailAddress;
@@ -18,7 +18,7 @@ public class UserAccount implements User {
     private String mUserName;
 
     // Keepin' track of dem h4tez0rz
-    private int reliabilityScore;
+    private int mReliabilityScore;
     private boolean isBlackListed;
 
     public UserAccount() {}
@@ -63,11 +63,11 @@ public class UserAccount implements User {
     }
 
     public int getReliabilityScore() {
-        return reliabilityScore;
+        return mReliabilityScore;
     }
 
     public void setReliabilityScore(int reliabilityScore) {
-        this.reliabilityScore = reliabilityScore;
+        mReliabilityScore = reliabilityScore;
     }
 
     public boolean isBlackListed() {
@@ -87,11 +87,5 @@ public class UserAccount implements User {
     @Override
     public void logout() {
 
-    }
-
-    public boolean isValidEmail(String emailAddress) {
-
-        
-        return true;
     }
 }

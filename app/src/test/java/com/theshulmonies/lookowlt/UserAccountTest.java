@@ -8,11 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotSame;
-import static junit.framework.Assert.assertTrue;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertThat;
 
 /**
  * Created by phil on 11/10/17.
@@ -32,13 +27,15 @@ public class UserAccountTest {
     @Test
     public void correctEmailFormatValidatorTest() {
         mUserAccount.setEmailAddress("phil@temple.edu");
-        assertEquals("Valid Temple email: ", true, utility.isValidEmail(mUserAccount.getEmailAddress()));
+        assertEquals("Valid Temple email: ", true,
+                utility.isValidEmail(mUserAccount.getEmailAddress()));
     }
 
     @Test
     public void incorrectEmailFormatValidatorTest() {
         mUserAccount.setEmailAddress("phil@google.com");
-        assertEquals("Invalid Temple email: ", false, utility.isValidEmail(mUserAccount.getEmailAddress()));
+        assertEquals("Invalid Temple email: ", false,
+                utility.isValidEmail(mUserAccount.getEmailAddress()));
     }
 
     @Test

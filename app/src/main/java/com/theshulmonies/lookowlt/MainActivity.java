@@ -10,14 +10,4 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
-    public void skrrPop(){
-        int quickMath = 2 + 2;
-        int minust = -1;
-        int skiddyPopPop = quickMath + minust;
-        // test for phil
-        //test for derek
-        //test for dave
-        //test for .gitignore
-    }
 }

@@ -16,6 +16,6 @@
         android:id="@+id/mainfeed_to_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register Activity Button"/>
+        android:text="Test Sign Out Button"/>
 
 </LinearLayout>

@@ -13,7 +13,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button registerButton;
+    private Button tempSignOut;
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        registerButton = findViewById(R.id.mainfeed_to_register);
+        tempSignOut = findViewById(R.id.mainfeed_to_register);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("LookOwlt");
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -37,11 +37,10 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
+        tempSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goToRegActivity = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(goToRegActivity);
+                mAuth.signOut();
             }
         });
     }

@@ -69,6 +69,12 @@ public class UserAccountTest {
         assertFalse(utility.isValidPassword(mUserAccount.getPassword()));
     }
 
+    @Test
+    public void testForEmptyEmail() {
+        mUserAccount.setEmailAddress("");
+        assertFalse(utility.isValidEmail(mUserAccount.getEmailAddress()));
+    }
+
     @After
     public void tearDown() throws Exception {
     }

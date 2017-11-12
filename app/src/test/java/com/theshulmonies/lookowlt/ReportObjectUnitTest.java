@@ -29,11 +29,25 @@ public class ReportObjectUnitTest {
         assertEquals(0, mEventsReport.getReportCredibilityScore());
     }
 
+
     @Test
     public void shouldIncrementCredibilityScore(){
         mEventsReport.userUpVote();
         assertEquals(1,mEventsReport.getReportCredibilityScore());
     }
+
+    @Test
+    public void shouldSetSpecialReportTrue(){
+        assertTrue(mEventsReport.isSpecialReport());
+    }
+
+    @Test
+    public void titleShouldNotBeNullAfterSet(){
+        mEventsReport.setReportTitle("");
+        String mTestString = mEventsReport.getReportTitle();
+        assertNotNull(mTestString);
+    }
+
 
 
 }

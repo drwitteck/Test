@@ -2,6 +2,9 @@ package com.theshulmonies.lookowlt;
 
 
 
+import android.location.Location;
+
+
 import com.theshulmonies.lookowlt.Reports.EventsReport;
 
 import org.junit.Before;
@@ -48,6 +51,12 @@ public class ReportObjectUnitTest {
         mEventsReport.setReportTitle("");
         String mTestString = mEventsReport.getReportTitle();
         assertNotNull(mTestString);
+    }
+
+    @Test
+    public void locationShouldNotBeNull(){
+        Location testLocation = mEventsReport.getLocationFromDevice();
+        assertNotNull(testLocation);
     }
 
 

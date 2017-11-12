@@ -27,31 +27,30 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseUtility mFirebaseUtility;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
-    private EditText loginEmail;
-    private EditText loginPassword;
-    private Button loginButton;
-    private Button createAccountButton;
-    Context context;
+    private EditText mLoginEmail;
+    private EditText mLoginPassword;
+    private Button mLoginButton;
+    private Button mCreateAccountButton;
+    Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mFirebaseUtility = new FirebaseUtility(context);
+        mFirebaseUtility = new FirebaseUtility(mContext);
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
-        loginEmail = findViewById(R.id.login_email);
-        loginPassword = findViewById(R.id.login_password);
-        loginButton = findViewById(R.id.login_button);
-        createAccountButton = findViewById(R.id.create_account_button);
+        mLoginEmail = findViewById(R.id.login_email);
+        mLoginPassword = findViewById(R.id.login_password);
+        mLoginButton = findViewById(R.id.login_button);
+        mCreateAccountButton = findViewById(R.id.create_account_button);
 
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = loginEmail.getText().toString().trim();
-                String password = loginPassword.getText().toString().trim();
+                String email = mLoginEmail.getText().toString().trim();
+                String password = mLoginPassword.getText().toString().trim();
 
                 if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
                     mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -66,16 +65,16 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        createAccountButton.setOnClickListener(new View.OnClickListener() {
+        mCreateAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.v("I am here", "I am here");
                 Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(registerIntent);
             }
         });
     }
 
+    // Would like to abstract this out to FirebaseUtility
     public void checkUserExists() {
         final String user_id = mAuth.getCurrentUser().getUid();
         mDatabase.addValueEventListener(new ValueEventListener() {
@@ -86,10 +85,8 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(loginIntent);
                 }
             }
-
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
+            public void onCancelled(DatabaseError databaseError) {}
         });
     }
 }

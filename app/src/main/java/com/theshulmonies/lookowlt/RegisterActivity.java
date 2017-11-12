@@ -21,76 +21,73 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.theshulmonies.lookowlt.Utilities.FirebaseUtility;
 
-import org.w3c.dom.Text;
-
 public class RegisterActivity extends AppCompatActivity {
 
     FirebaseUtility mFirebaseUtility;
-    private EditText nameField;
-    private EditText emailField;
-    private EditText passwordField;
-    private Button registerButton;
+    private EditText mNameField;
+    private EditText mEmailField;
+    private EditText mPasswordField;
+    private Button mRegisterButton;
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
-    Context context;
+    Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-
-        nameField = findViewById(R.id.nameField);
-        emailField = findViewById(R.id.emailField);
-        passwordField = findViewById(R.id.passwordField);
-        registerButton = findViewById(R.id.register_button);
-        mFirebaseUtility = new FirebaseUtility(context);
-        mAuth = FirebaseAuth.getInstance();
+        mNameField = findViewById(R.id.nameField);
+        mEmailField = findViewById(R.id.emailField);
+        mPasswordField = findViewById(R.id.passwordField);
+        mRegisterButton = findViewById(R.id.register_button);
+        mFirebaseUtility = new FirebaseUtility(mContext);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+        mAuth = FirebaseAuth.getInstance();
 
-
-        /*
-        registerButton.setOnClickListener(new View.OnClickListener() {
+        mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registerButtonClicked();
+                registerButtonClicked(view);
             }
         });
-        */
-
     }
 
     public void registerButtonClicked(View view) {
-        final String name = nameField.getText().toString().trim();
-        final String email = emailField.getText().toString().trim();
-        final String password = passwordField.getText().toString().trim();
+        final String name = mNameField.getText().toString().trim();
+        final String email = mEmailField.getText().toString().trim();
+        final String password = mPasswordField.getText().toString().trim();
 
         if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
-            //mFirebaseUtility.writeNewUserToFirebase(name, email, password);
-            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
+            if (mFirebaseUtility.isValidEmail(email) && mFirebaseUtility.isValidPassword(password)) {
+                //mFirebaseUtility.writeNewUserToFirebase(name, email, password);
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
 
-                    if (task.isSuccessful()) {
-                        //Log.d(TAG, "createUserWithEmail:success")
-                        String user_id = mAuth.getCurrentUser().getUid();
-                        DatabaseReference current_user_db = mDatabase.child(user_id);
-                        current_user_db.child("Name").setValue(name);
-                        current_user_db.child("Image").setValue("default");
+                        if (task.isSuccessful()) {
+                            Log.d("Create User Result:", "Creation was a success through Firebase Authentication");
+                            String user_id = mAuth.getCurrentUser().getUid();
+                            DatabaseReference current_user_db = mDatabase.child(user_id);
+                            current_user_db.child("Name").setValue(name);
+                            current_user_db.child("Image").setValue("default");
 
-                        Intent backToLoginActivity = new Intent(RegisterActivity.this, LoginActivity.class);
-                        backToLoginActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(backToLoginActivity);
-                    } else {
-                        task.addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.v("Tag", e.getLocalizedMessage());
-                            }
-                        });
+                            Intent backToLoginActivity = new Intent(RegisterActivity.this, LoginActivity.class);
+                            backToLoginActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(backToLoginActivity);
+                        } else {
+                            task.addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.v("Tag", e.getLocalizedMessage());
+                                }
+                            });
+                        }
                     }
-                }
-            });
+                });
+            } else {
+                Toast.makeText(this, "Please enter a Temple email address", Toast.LENGTH_LONG).show();
+            }
         }
     }
 }

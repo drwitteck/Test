@@ -33,8 +33,7 @@ public class EventsReport implements Reportable {
      */
     @Override
     public void userUpVote() {
-
-
+        reportCredibilityScore += 1;
     }
 
     /**
@@ -43,7 +42,7 @@ public class EventsReport implements Reportable {
      */
     @Override
     public void userDownVote() {
-
+        reportCredibilityScore -= 1;
     }
 
     public long getReportCredibilityScore(){
@@ -99,7 +98,7 @@ public class EventsReport implements Reportable {
     }
 
     public void sendSpecialReport(){
-
+        specialReport = true;
     }
 
     /**

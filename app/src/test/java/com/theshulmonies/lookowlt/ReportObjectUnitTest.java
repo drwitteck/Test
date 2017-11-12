@@ -25,6 +25,7 @@ public class ReportObjectUnitTest {
      */
     @Test
     public void shouldDecrementCredibilityScore(){
+        mEventsReport.userUpVote();
         mEventsReport.userDownVote();
         assertEquals(0, mEventsReport.getReportCredibilityScore());
     }

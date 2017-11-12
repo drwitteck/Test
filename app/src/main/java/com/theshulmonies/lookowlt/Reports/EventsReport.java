@@ -107,6 +107,8 @@ public class EventsReport implements Reportable {
      * @return Location reportLocation
      */
     public Location getLocationFromDevice(){
+        Location deviceLocale = new Location("");
+
         return null;
     }
 }

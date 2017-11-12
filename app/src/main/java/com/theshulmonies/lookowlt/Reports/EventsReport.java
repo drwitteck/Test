@@ -21,19 +21,30 @@ public class EventsReport implements Reportable {
 
     public EventsReport(){
 
+        reportCredibilityScore = 0;
+
     }
 
+    /**
+     * this method takes no parameters but serves the purpose of
+     * incrementing the reports credibility score
+     */
     @Override
     public void userUpVote() {
 
+
     }
 
+    /**
+     * this method takes no parameters but serves the purpose of
+     * decrementing the reports credibility score
+     */
     @Override
     public void userDownVote() {
 
     }
 
-    public int getCredibitlyScore(){
+    public int getReportCredibilityScore(){
         return 0;
     }
 

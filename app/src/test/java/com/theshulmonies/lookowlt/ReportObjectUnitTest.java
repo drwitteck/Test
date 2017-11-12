@@ -4,6 +4,7 @@ package com.theshulmonies.lookowlt;
 
 import com.theshulmonies.lookowlt.Reports.EventsReport;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -14,13 +15,25 @@ import static org.junit.Assert.*;
 public class ReportObjectUnitTest {
     EventsReport mEventsReport;
 
-    public void setup(){
+    @Before
+    public void setup() throws Exception{
         mEventsReport = new EventsReport();
     }
 
+    /**
+     * tests the down vote method to make sure it decrements score
+     */
     @Test
     public void shouldDecrementCredibilityScore(){
         mEventsReport.userDownVote();
-        assertEquals(0, mEventsReport.getCredibitlyScore());
+        assertEquals(0, mEventsReport.getReportCredibilityScore());
     }
+
+    @Test
+    public void shouldIncrementCredibilityScore(){
+        mEventsReport.userUpVote();
+        assertEquals(1,mEventsReport.getReportCredibilityScore());
+    }
+
+
 }

@@ -77,6 +77,10 @@ public class RegisterActivity extends AppCompatActivity {
                         DatabaseReference current_user_db = mDatabase.child(user_id);
                         current_user_db.child("Name").setValue(name);
                         current_user_db.child("Image").setValue("default");
+
+                        Intent backToLoginActivity = new Intent(RegisterActivity.this, LoginActivity.class);
+                        backToLoginActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(backToLoginActivity);
                     } else {
                         task.addOnFailureListener(new OnFailureListener() {
                             @Override
@@ -87,11 +91,6 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 }
             });
-
-            Intent backToLoginActivity = new Intent(RegisterActivity.this, LoginActivity.class);
-            backToLoginActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(backToLoginActivity);
         }
-
     }
 }

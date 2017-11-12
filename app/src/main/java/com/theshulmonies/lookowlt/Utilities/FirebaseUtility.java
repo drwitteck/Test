@@ -1,16 +1,23 @@
 package com.theshulmonies.lookowlt.Utilities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.theshulmonies.lookowlt.LoginActivity;
+import com.theshulmonies.lookowlt.MainActivity;
 import com.theshulmonies.lookowlt.Utilities.Utility;
 
 /**
@@ -37,6 +44,7 @@ public class FirebaseUtility extends Utility {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    Log.v("Success", "User Successfully Created");
                     String user_id = mAuth.getCurrentUser().getUid();
                     DatabaseReference current_user_db = mDatabaseReference.child(user_id);
                     current_user_db.child("Name").setValue(name);
@@ -44,4 +52,5 @@ public class FirebaseUtility extends Utility {
             }
         });
     }
+
 }

@@ -38,6 +38,7 @@ public class ReportObjectUnitTest {
 
     @Test
     public void shouldSetSpecialReportTrue(){
+        mEventsReport.sendSpecialReport();
         assertTrue(mEventsReport.isSpecialReport());
     }
 

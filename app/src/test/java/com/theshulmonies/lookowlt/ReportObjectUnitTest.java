@@ -2,6 +2,8 @@ package com.theshulmonies.lookowlt;
 
 
 
+import com.theshulmonies.lookowlt.Reports.EventsReport;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -10,15 +12,15 @@ import static org.junit.Assert.*;
  */
 
 public class ReportObjectUnitTest {
-    EventsReport eventsReport;
+    EventsReport mEventsReport;
 
     public void setup(){
-        eventsReport = new EventsReport();
+        mEventsReport = new EventsReport();
     }
 
     @Test
     public void shouldDecrementCredibilityScore(){
-        eventsReport.userDownVote();
-        assertEquals(0,eventsReport.getCredibitlyScore());
+        mEventsReport.userDownVote();
+        assertEquals(0, mEventsReport.getCredibitlyScore());
     }
 }

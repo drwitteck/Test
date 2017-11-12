@@ -66,12 +66,13 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (task.isSuccessful()) {
-                            Log.d("Create User Result:", "Creation was a success through Firebase Authentication");
+                            Log.d("Create User Result Success:", "Creation was a success through Firebase Authentication");
                             String user_id = mAuth.getCurrentUser().getUid();
                             DatabaseReference current_user_db = mDatabase.child(user_id);
                             current_user_db.child("Name").setValue(name);
                             current_user_db.child("Image").setValue("default");
 
+                            // Navigate user back to the LoginActivity to enter username/password to login
                             Intent backToLoginActivity = new Intent(RegisterActivity.this, LoginActivity.class);
                             backToLoginActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(backToLoginActivity);
@@ -79,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
                             task.addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Log.v("Tag", e.getLocalizedMessage());
+                                    Log.v("Create User Result Failed", e.getLocalizedMessage());
                                 }
                             });
                         }

@@ -8,9 +8,20 @@
     tools:context="com.theshulmonies.lookowlt.RegisterActivity">
 
     <EditText
+        android:id="@+id/nameField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
+
+        android:id="@+id/emailField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/passwordField"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/register_account"/>
 </LinearLayout>

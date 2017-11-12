@@ -34,7 +34,6 @@ public class Utility {
         if (password != null && password.length() > 5 && password.length() < 21) {
             for (int index = 0; index < password.length(); index++) {
                 final Character character = password.charAt(index);
-
                 if (Character.isWhitespace(character))
                     return false;
                 else if (Character.isLowerCase(character))

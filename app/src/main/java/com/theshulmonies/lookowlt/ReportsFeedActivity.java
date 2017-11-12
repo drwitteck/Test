@@ -2,18 +2,17 @@ package com.theshulmonies.lookowlt;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-/**
- * Created by drwitteck on 11/8/17.
- */
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class ReportsFeedActivity extends AppCompatActivity {
+
     //ReportsFeedAdapter feedAdapter;
     //FirebaseUtility feedFbUtility;
-    ListView listReportsInFeed;
-    TextView reportScore;
+    private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

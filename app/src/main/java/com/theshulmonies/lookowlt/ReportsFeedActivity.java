@@ -18,13 +18,13 @@ public class ReportsFeedActivity extends AppCompatActivity {
 
     //ReportsFeedAdapter feedAdapter;
     //FirebaseUtility feedFbUtility;
-    private RecyclerView mRecyclerView;
+    //private RecyclerView mRecyclerView;
     private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_reports_feed);
 
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {

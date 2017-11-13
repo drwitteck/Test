@@ -1,6 +1,7 @@
 package com.theshulmonies.lookowlt.Utilities;
 
 import android.content.Context;
+import android.location.Location;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -23,6 +24,7 @@ public class FirebaseUtility extends Utility {
     private DatabaseReference mDatabaseReference;
     private StorageReference mStorageReference;
     private FirebaseDatabase mFirebaseDatabase;
+    private Location reportLatLong;
 
     public FirebaseUtility(Context context) {
         super(context);
@@ -44,6 +46,18 @@ public class FirebaseUtility extends Utility {
                 }
             }
         });
+    }
+
+    // TODO move this method to utility, will interact with reports through facotory
+    /**
+     * gets the latitude longitude  from the devices gps location and returns it in a
+     * location object
+     * @return Location reportLocation
+     */
+    public Location getLocationFromDevice(){
+        Location deviceLocale = new Location("");
+
+        return null;
     }
 
 }

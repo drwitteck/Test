@@ -53,11 +53,7 @@ public class ReportObjectUnitTest {
         assertNotNull(mTestString);
     }
 
-    @Test
-    public void locationShouldNotBeNull(){
-        Location testLocation = mEventsReport.getLocationFromDevice();
-        assertNotNull(testLocation);
-    }
+
 
 
 

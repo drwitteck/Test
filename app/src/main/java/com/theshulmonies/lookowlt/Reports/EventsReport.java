@@ -1,7 +1,7 @@
 package com.theshulmonies.lookowlt.Reports;
 
 import android.graphics.Color;
-import android.location.Location;
+
 
 import java.util.Date;
 
@@ -15,8 +15,7 @@ public class EventsReport implements Reportable {
     private String reportDetails;
     private Date dateAdded;
     private boolean specialReport;
-    //location object holds lattitude and logintube of gps location
-    private Location reportLatLong;
+
     private Color eventsTypeMarker;
     private long reportCredibilityScore;
 
@@ -24,6 +23,8 @@ public class EventsReport implements Reportable {
 
         //when report is created score set to 0
         reportCredibilityScore = 0;
+
+
 
     }
 
@@ -73,13 +74,8 @@ public class EventsReport implements Reportable {
         this.specialReport = specialReport;
     }
 
-    public Location getReportLatLong() {
-        return reportLatLong;
-    }
 
-    public void setReportLatLong(Location reportLatLong) {
-        this.reportLatLong = reportLatLong;
-    }
+
 
     public Color getEventsTypeMarker() {
         return eventsTypeMarker;
@@ -102,15 +98,7 @@ public class EventsReport implements Reportable {
     }
 
 
-    // I think this should go into the utility class maybe?
-    /**
-     * gets the latitude longitude  from the devices gps location and returns it in a
-     * location object
-     * @return Location reportLocation
-     */
-    public Location getLocationFromDevice(){
-        Location deviceLocale = new Location("");
 
-        return null;
-    }
+
+
 }

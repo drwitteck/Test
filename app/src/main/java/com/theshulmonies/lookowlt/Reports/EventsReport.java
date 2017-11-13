@@ -12,6 +12,7 @@ import java.util.Date;
 public class EventsReport implements Reportable {
 
     private String reportTitle;
+    private String reportDetails;
     private Date dateAdded;
     private boolean specialReport;
     //location object holds lattitude and logintube of gps location
@@ -21,20 +22,31 @@ public class EventsReport implements Reportable {
 
     public EventsReport(){
 
+        //when report is created score set to 0
+        reportCredibilityScore = 0;
+
     }
 
+    /**
+     * this method takes no parameters but serves the purpose of
+     * incrementing the reports credibility score
+     */
     @Override
     public void userUpVote() {
-
+        reportCredibilityScore += 1;
     }
 
+    /**
+     * this method takes no parameters but serves the purpose of
+     * decrementing the reports credibility score
+     */
     @Override
     public void userDownVote() {
-
+        reportCredibilityScore -= 1;
     }
 
-    public int getCredibitlyScore(){
-        return 0;
+    public long getReportCredibilityScore(){
+        return reportCredibilityScore;
     }
 
     public String getReportTitle() {
@@ -75,5 +87,28 @@ public class EventsReport implements Reportable {
 
     public void setEventsTypeMarker(Color eventsTypeMarker) {
         this.eventsTypeMarker = eventsTypeMarker;
+    }
+
+    public String getReportDetails() {
+        return reportDetails;
+    }
+
+    public void setReportDetails(String reportDetails) {
+        this.reportDetails = reportDetails;
+    }
+
+    public void sendSpecialReport(){
+        specialReport = true;
+    }
+
+    /**
+     * gets the latitude longitude  from the devices gps location and returns it in a
+     * location object
+     * @return Location reportLocation
+     */
+    public Location getLocationFromDevice(){
+        Location deviceLocale = new Location("");
+
+        return null;
     }
 }

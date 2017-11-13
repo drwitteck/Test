@@ -101,6 +101,8 @@ public class EventsReport implements Reportable {
         specialReport = true;
     }
 
+
+    // I think this should go into the utility class maybe?
     /**
      * gets the latitude longitude  from the devices gps location and returns it in a
      * location object

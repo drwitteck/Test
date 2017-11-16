@@ -39,4 +39,19 @@ public class ReportFactoryTest {
         assertNotNull(testEventReport);
 
     }
+
+    @Test
+    public void shouldCreateNewMaintenaceReport(){
+
+    }
+
+    @Test
+    public void shouldCreateNewEmergencyReport(){
+
+    }
+
+    @Test
+    public void shouldCreatedNewFreeStuffReport(){
+
+    }
 }

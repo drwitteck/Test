@@ -17,7 +17,15 @@ public class MaintenanceReport extends EventsReport {
      *
      */
 
-    public  void sentReportDetailsToTUMD(boolean sendReport){
+    public  boolean sentReportDetailsToTUMD(boolean sendReport){
+
+        boolean success = false;
+
+        if(true){
+            success = true;
+            return success;
+        }
+        return false;
 
     }
 

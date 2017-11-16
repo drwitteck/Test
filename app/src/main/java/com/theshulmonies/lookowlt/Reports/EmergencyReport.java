@@ -17,8 +17,15 @@ public class EmergencyReport extends EventsReport {
      * @param sendReport type boolean
      *
      */
-    public void sentReportDetailsToTUPD(boolean sendReport){
+    public boolean sentReportDetailsToTUPD(boolean sendReport){
 
+        boolean success = false;
+
+        if(true){
+            success = true;
+            return success;
+        }
+        return false;
     }
 
 }

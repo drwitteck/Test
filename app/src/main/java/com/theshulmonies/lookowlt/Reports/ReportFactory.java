@@ -19,6 +19,6 @@ public class ReportFactory {
     FirebaseUtility mFirebaseUtility;
 
     public EventsReport getReport(Color color){
-        return null;
+        return new EventsReport();
     }
 }

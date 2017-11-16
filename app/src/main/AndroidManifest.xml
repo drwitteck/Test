@@ -8,9 +8,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/lo_launcher_alpha"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/lo_launcher_alpha"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -24,8 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity">
-      </activity>
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".CreateNewReportActivity"></activity>
     </application>
 
 </manifest>

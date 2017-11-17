@@ -25,7 +25,6 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".CreateNewReportActivity"></activity>
     </application>
 
 </manifest>

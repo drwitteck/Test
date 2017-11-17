@@ -54,6 +54,12 @@ public class ReportFactoryTest {
     @Test
     public void shouldCreateNewEmergencyReport(){
 
+        Color mColor = new Color();
+        mColor = Color.valueOf(Color.RED);
+
+        testEventReport = factory.getReport(mColor);
+
+        assertTrue(testEventReport.isSpecialReport());
     }
 
     @Test

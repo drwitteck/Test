@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Look Owlt</string>
     <string name="register_account">Register Account</string>
+    <string name="log_out">Log out</string>
+    <string name="take_picture">Take a Picture</string>
+    <string name="use_picture">Use this Picture</string>
+    <string name="redo_picture">Redo</string>
+    <string name="take_a_picture">Take a picture</string>
+
+    <string-array name="settings_menu_array">
+        <item>Sign Out</item>
+    </string-array>
 </resources>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.theshulmonies.lookowlt.RegisterActivity">
+    tools:context="com.theshulmonies.lookowlt.Activities.RegisterActivity">
 
     <EditText
         android:id="@+id/nameField"

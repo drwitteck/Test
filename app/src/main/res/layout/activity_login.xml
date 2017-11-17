@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.theshulmonies.lookowlt.LoginActivity">
+    tools:context="com.theshulmonies.lookowlt.Activities.LoginActivity">
 
     <EditText
         android:id="@+id/login_email"

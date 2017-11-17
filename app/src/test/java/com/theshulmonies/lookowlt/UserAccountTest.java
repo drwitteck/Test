@@ -2,6 +2,7 @@ package com.theshulmonies.lookowlt;
 
 import android.content.Context;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.theshulmonies.lookowlt.Users.UserAccount;
 import com.theshulmonies.lookowlt.Utilities.FirebaseUtility;
 import com.theshulmonies.lookowlt.Utilities.Utility;
@@ -23,12 +24,15 @@ public class UserAccountTest {
     UserAccount mUserAccount;
     Utility utility;
     FirebaseUtility firebaseUtility;
+    FirebaseAuth mAuth;
     Context context;
 
     @Before
     public void setUp() throws Exception {
         mUserAccount = new UserAccount();
+
         utility = new Utility(context);
+        mAuth = FirebaseAuth.getInstance();
         //firebaseUtility = new FirebaseUtility(context);
     }
 
@@ -73,6 +77,10 @@ public class UserAccountTest {
     public void testForEmptyEmail() {
         mUserAccount.setEmailAddress("");
         assertFalse(utility.isValidEmail(mUserAccount.getEmailAddress()));
+    }
+
+    @Test
+    public void didUserSignOutTest() {
     }
 
     @After

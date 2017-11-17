@@ -1,4 +1,4 @@
-package com.theshulmonies.lookowlt;
+package com.theshulmonies.lookowlt.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.theshulmonies.lookowlt.R;
 import com.theshulmonies.lookowlt.Utilities.FirebaseUtility;
 
 public class LoginActivity extends AppCompatActivity {
@@ -42,10 +43,10 @@ public class LoginActivity extends AppCompatActivity {
         mFirebaseUtility = new FirebaseUtility(mContext);
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
-        mLoginEmail = findViewById(R.id.login_email);
-        mLoginPassword = findViewById(R.id.login_password);
-        mLoginButton = findViewById(R.id.login_button);
-        mCreateAccountButton = findViewById(R.id.create_account_button);
+        mLoginEmail = (EditText) findViewById(R.id.login_email);
+        mLoginPassword = (EditText) findViewById(R.id.login_password);
+        mLoginButton = (Button) findViewById(R.id.login_button);
+        mCreateAccountButton = (Button) findViewById(R.id.create_account_button);
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override

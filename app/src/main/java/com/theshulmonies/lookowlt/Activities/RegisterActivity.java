@@ -1,4 +1,4 @@
-package com.theshulmonies.lookowlt;
+package com.theshulmonies.lookowlt.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.theshulmonies.lookowlt.R;
 import com.theshulmonies.lookowlt.Utilities.FirebaseUtility;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -37,10 +38,10 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        mNameField = findViewById(R.id.nameField);
-        mEmailField = findViewById(R.id.emailField);
-        mPasswordField = findViewById(R.id.passwordField);
-        mRegisterButton = findViewById(R.id.register_button);
+        mNameField = (EditText) findViewById(R.id.nameField);
+        mEmailField = (EditText) findViewById(R.id.emailField);
+        mPasswordField = (EditText) findViewById(R.id.passwordField);
+        mRegisterButton = (Button) findViewById(R.id.register_button);
         mFirebaseUtility = new FirebaseUtility(mContext);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
         mAuth = FirebaseAuth.getInstance();

@@ -53,8 +53,11 @@ public class ReportObjectUnitTest {
         assertNotNull(mTestString);
     }
 
-
-
-
+    @Test
+    public void descriptionShouldNotBeNullAfterSet(){
+        mEventsReport.setReportDetails("");
+        String mTestString = mEventsReport.getReportDetails();
+        assertNotNull(mTestString);
+    }
 
 }

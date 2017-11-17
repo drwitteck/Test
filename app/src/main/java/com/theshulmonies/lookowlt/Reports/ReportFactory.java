@@ -20,11 +20,8 @@ public class ReportFactory {
 
     ///
     public EventsReport getReport(Color color){
-        if(color.equals(MAINTENANCE_COLOR))
-        {
-            //do some shit
-            return new MaintenanceReport();
-        }
         return new EventsReport();
+
+
     }
 }

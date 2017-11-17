@@ -13,6 +13,7 @@ public class EventsReport implements Reportable {
 
     private String reportTitle;
     private String reportDetails;
+    private String reportImage;
     private Date dateAdded;
     private boolean specialReport;
 
@@ -97,8 +98,11 @@ public class EventsReport implements Reportable {
         specialReport = true;
     }
 
+    public String getImage() {
+        return reportImage;
+    }
 
-
-
-
+    public void setImage(String image) {
+        this.reportImage = image;
+    }
 }

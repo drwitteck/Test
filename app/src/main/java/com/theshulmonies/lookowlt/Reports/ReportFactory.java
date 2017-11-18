@@ -2,6 +2,7 @@ package com.theshulmonies.lookowlt.Reports;
 
 import android.graphics.Color;
 
+import com.theshulmonies.lookowlt.R;
 import com.theshulmonies.lookowlt.Utilities.FirebaseUtility;
 
 /**
@@ -12,15 +13,30 @@ import com.theshulmonies.lookowlt.Utilities.FirebaseUtility;
  */
 
 public class ReportFactory {
-    private final int EMERGENCY_COLOR = Color.RED ;
-    private final int MAINTENANCE_COLOR = Color.YELLOW;
-    private final int FREE_STUFF_COLOR = Color.BLUE;
+    private final String EMERGENCY_COLOR = "Red" ;
+    private final String MAINTENANCE_COLOR = "Yellow" ;
+    private final String FREE_STUFF_COLOR = "Blue";
 
     FirebaseUtility mFirebaseUtility;
 
-    ///
-    public EventsReport getReport(Color color){
-        return new EventsReport();
+    /*
+    @param reportTypeColor takes in a Color object assigned when the user selects the report type
+    @return returns and object of EventsReport with the correct instantiation based on the
+    type that was recieved.
+     */
+    public EventsReport getReport(String reportTypeColor){
+
+        if(reportTypeColor.equals(EMERGENCY_COLOR)){
+            return new EmergencyReport();
+        }
+        else if(reportTypeColor.equals(MAINTENANCE_COLOR)){
+            return new MaintenanceReport();
+        }
+        else if(reportTypeColor.equals(FREE_STUFF_COLOR)){
+            return new FreeStuffReport();
+        }
+        //default
+        else {return new EventsReport();}
 
 
     }

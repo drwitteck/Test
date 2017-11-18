@@ -17,7 +17,7 @@ public class EventsReport implements Reportable {
     private Date dateAdded;
     private boolean specialReport;
 
-    private Color eventsTypeMarker;
+    private String eventsTypeMarker;
     private long reportCredibilityScore;
 
     public EventsReport(){
@@ -78,11 +78,11 @@ public class EventsReport implements Reportable {
 
 
 
-    public Color getEventsTypeMarker() {
+    public String getEventsTypeMarker() {
         return eventsTypeMarker;
     }
 
-    public void setEventsTypeMarker(Color eventsTypeMarker) {
+    public void setEventsTypeMarker(String eventsTypeMarker) {
         this.eventsTypeMarker = eventsTypeMarker;
     }
 

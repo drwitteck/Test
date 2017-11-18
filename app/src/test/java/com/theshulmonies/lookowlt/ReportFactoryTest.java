@@ -1,13 +1,16 @@
 package com.theshulmonies.lookowlt;
 
 import android.graphics.Color;
+import android.os.Build;
 
 import com.theshulmonies.lookowlt.Reports.EventsReport;
 import com.theshulmonies.lookowlt.Reports.ReportFactory;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+
+
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertFalse;
@@ -22,12 +25,16 @@ public class ReportFactoryTest {
 
     ReportFactory factory;
     EventsReport testEventReport;
-    Color color;
+
+
+
 
     @Before
     public void setup() throws Exception{
         factory = new ReportFactory();
-        color = new Color();
+
+
+
     }
 
     /**
@@ -35,29 +42,31 @@ public class ReportFactoryTest {
      */
     @Test
     public void reportShouldNotReturnNull(){
-        testEventReport = factory.getReport(color);
+        String mColorString = "";
+        testEventReport = factory.getReport(mColorString);
         assertNotNull(testEventReport);
 
     }
 
     @Test
     public void shouldCreateNewMaintenaceReport(){
-        Color mColor = new Color();
-        mColor = Color.valueOf(Color.YELLOW);
 
-        testEventReport = factory.getReport(mColor);
 
-        assertTrue(testEventReport.isSpecialReport());
+         String mColorString = "Yellow";
+
+        testEventReport = factory.getReport(mColorString);
+
+        assertNotNull(testEventReport.isSpecialReport());
 
     }
 
     @Test
     public void shouldCreateNewEmergencyReport(){
 
-        Color mColor = new Color();
-        mColor = Color.valueOf(Color.RED);
 
-        testEventReport = factory.getReport(mColor);
+        String mColorString = "Red";
+
+        testEventReport = factory.getReport(mColorString);
 
         assertTrue(testEventReport.isSpecialReport());
     }

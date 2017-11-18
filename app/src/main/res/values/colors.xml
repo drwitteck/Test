@@ -21,4 +21,9 @@
     <color name="btn_login_bg">#eceef1</color>
     <color name="lbl_name">#333333</color>
     <color name="btn_logut_bg">#ff6861</color>
+
+    <color name="indigo">#4b0082</color>
+    <color name="deep_pink">#ff1493</color>
+    <color name="cherry">#9E1B34</color>
+
 </resources>

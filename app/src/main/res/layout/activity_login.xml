@@ -7,28 +7,76 @@
     android:orientation="vertical"
     tools:context="com.theshulmonies.lookowlt.Activities.LoginActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/cherry"
+        android:textSize="35dp"
+        android:text="LOOK OWL'T"/>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/temple_owls"/>
+
     <EditText
         android:id="@+id/login_email"
         android:hint="Enter Temple Email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:theme="@style/loginRegisterEditTextFields"/>
 
     <EditText
-        android:hint="Enter Passowrd"
         android:id="@+id/login_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:inputType="textPassword"
+        android:hint="Enter Password"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:theme="@style/loginRegisterEditTextFields"/>
 
     <Button
         android:id="@+id/login_button"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/cherry"
         android:text="Log in"/>
 
     <Button
-        android:id="@+id/create_account_button"
-        android:layout_width="match_parent"
+        android:id="@+id/forgot_password_button"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="Forgot Password?" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/cherry"
+        android:textSize="15dp"
+        android:text="Don't have an account?"/>
+
+    <Button
+        android:id="@+id/create_account_button"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/cherry"
         android:text="Create Account" />
+
+
 
 </LinearLayout>

@@ -1,34 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/reportCardViewStyle"
 
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp">
-
-        <ImageView
-            android:id="@+id/report_image"
-            android:layout_width="match_parent"
-            android:layout_height="150dp" />
+        android:padding="2dp">
 
         <TextView
             android:id="@+id/report_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Post Title"
-            android:layout_margin="5dp"/>
+            android:layout_marginBottom="5dp"
+            android:text="Post Title"/>
 
         <TextView
             android:id="@+id/report_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Post Description"
-            android:layout_margin="5dp"/>
+            android:text="Post Description"/>
 
     </LinearLayout>
 </android.support.v7.widget.CardView>

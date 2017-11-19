@@ -15,6 +15,7 @@
     <string name="select_report">Select report type: </string>
     <string name="report_desc">What\'s going on, fam?</string>
     <string name="submit_report">Submit Report</string>
+    <string name="take_of_your_jacket">Man is not hot</string>
 
     <string-array name="settings_menu_array">
         <item>Sign Out</item>

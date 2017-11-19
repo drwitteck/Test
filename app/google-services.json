@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "207917113009-fc2hqim0j9s34eg8fdagsh8a8e47e9m0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.theshulmonies.lookowlt",
+            "certificate_hash": "f15fadcaa691305331767fbe73358f908930a9d8"
+          }
+        },
+        {
           "client_id": "207917113009-2edomt77pjluhtul34emfgm0jfd07i0b.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

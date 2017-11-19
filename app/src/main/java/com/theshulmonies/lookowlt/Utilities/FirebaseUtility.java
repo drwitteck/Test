@@ -1,13 +1,7 @@
 package com.theshulmonies.lookowlt.Utilities;
 
 import android.content.Context;
-import android.location.Location;
-import android.support.annotation.NonNull;
-import android.util.Log;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -24,7 +18,7 @@ public class FirebaseUtility extends Utility {
     private DatabaseReference mDatabaseReference;
     private StorageReference mStorageReference;
     private FirebaseDatabase mFirebaseDatabase;
-    private Location reportLatLong;
+    private DatabaseReference mUserDatabaseRef;
 
     public FirebaseUtility(Context context) {
         super(context);
@@ -33,31 +27,9 @@ public class FirebaseUtility extends Utility {
         mDatabaseReference = FirebaseDatabase.getInstance().getReference();
     }
 
-    public void writeNewUserToFirebase(final String name, String email, String password) {
-        mDatabaseReference.child("Users");
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    Log.v("Success", "User Successfully Created");
-                    String user_id = mAuth.getCurrentUser().getUid();
-                    DatabaseReference current_user_db = mDatabaseReference.child(user_id);
-                    current_user_db.child("Name").setValue(name);
-                }
-            }
+    public void logUserIntoFireBase(String email, String password) {
+        mAuth.signInWithEmailAndPassword(formatEmail(email), password).addOnCompleteListener(task -> {
+            showToast("Log in was successful");
         });
     }
-
-    // TODO move this method to utility, will interact with reports through facotory
-    /**
-     * gets the latitude longitude  from the devices gps location and returns it in a
-     * location object
-     * @return Location reportLocation
-     */
-    public Location getLocationFromDevice(){
-        Location deviceLocale = new Location("");
-
-        return null;
-    }
-
 }

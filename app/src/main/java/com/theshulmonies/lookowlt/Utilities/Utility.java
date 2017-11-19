@@ -1,6 +1,10 @@
 package com.theshulmonies.lookowlt.Utilities;
 
 import android.content.Context;
+import android.location.Location;
+import android.widget.Toast;
+
+import com.google.android.gms.location.FusedLocationProviderClient;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,7 +15,9 @@ import java.util.regex.Pattern;
 
 public class Utility {
 
-    Context mContext;
+    private Context mContext;
+    private FusedLocationProviderClient mFusedLocationClient;
+    private Location mLocation;
 
     public Utility(Context context) {
         mContext = context;
@@ -20,7 +26,6 @@ public class Utility {
     public boolean isValidEmail(String emailAddress) {
         if (emailAddress == null)
             return false;
-
         final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@*@temple\\.edu";
         Pattern pattern = Pattern.compile(EMAIL_PATTERN);
         Matcher matcher = pattern.matcher(emailAddress);
@@ -50,5 +55,22 @@ public class Utility {
             }
         }
         return special && digit && upperCase && lowerCase;
+    }
+
+    public String formatEmail(String email) {
+        String lowerEmail = email.toLowerCase();
+        String formattedEmail = "";
+
+        for (int i = 0; i < lowerEmail.length(); i++) {
+            if (lowerEmail.charAt(i) == ' ') {
+            } else {
+                formattedEmail = formattedEmail + lowerEmail.charAt(i);
+            }
+        }
+        return formattedEmail;
+    }
+
+    public void showToast(String message) {
+        Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show();
     }
 }

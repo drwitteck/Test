@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Look Owlt</string>
+    <string name="register_account">Register Account</string>
+    <string name="maintenance_color">Yellow</string>
+    <string name="emergency_color">Red</string>
+    <string name="free_stuff_color">Blue</string>
+
+    <string name="log_out">Log out</string>
+    <string name="take_picture">Take a Picture</string>
+    <string name="use_picture">Use this Picture</string>
+    <string name="redo_picture">Redo</string>
+    <string name="take_a_picture">Take a picture</string>
+    <string name="sign_out">Log Out</string>
+
+    <string name="select_report">Select report type: </string>
+    <string name="report_desc">What\'s going on, fam?</string>
+    <string name="submit_report">Submit Report</string>
+
+    <string-array name="settings_menu_array">
+        <item>Sign Out</item>
+    </string-array>
+</resources>

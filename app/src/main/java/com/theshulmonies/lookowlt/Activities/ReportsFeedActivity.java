@@ -1,84 +1,91 @@
 package com.theshulmonies.lookowlt.Activities;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.os.Environment;
+import android.os.StrictMode;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.support.v7.widget.Toolbar;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
 import com.theshulmonies.lookowlt.R;
 import com.theshulmonies.lookowlt.Reports.EventsReport;
+import com.theshulmonies.lookowlt.Utilities.EventViewHolder;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ReportsFeedActivity extends AppCompatActivity {
 
+    private FusedLocationProviderClient mFusedLocationClient;
+    private Location mLocation;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private RecyclerView mRecyclerView;
     private DatabaseReference mDatabase;
-    private Button mTempSignOut;
+    private String mImagePath;
+    private static final int REQUEST_IMAGE_CAPTURE = 111;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reports_feed);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        FirebaseApp.initializeApp(this);
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
 
-        ActivityCompat.requestPermissions(this, new String[] {
+        ActivityCompat.requestPermissions(this, new String[]{
                 android.Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.ACCESS_COARSE_LOCATION,
-                Manifest.permission.CAMERA
+                Manifest.permission.CAMERA,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_EXTERNAL_STORAGE
         }, 10);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.card_list);
+        mRecyclerView = findViewById(R.id.card_list);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Reports");
 
         mAuth = FirebaseAuth.getInstance();
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if (firebaseAuth.getCurrentUser() == null) {
-                    Intent loginIntent = new Intent(ReportsFeedActivity.this, LoginActivity.class);
-                    loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(loginIntent);
-                }
+        mAuthListener = firebaseAuth -> {
+            if (firebaseAuth.getCurrentUser() == null) {
+                Intent loginIntent = new Intent(ReportsFeedActivity.this, LoginActivity.class);
+                loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(loginIntent);
             }
         };
-
-        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent postEventReport = new Intent(ReportsFeedActivity.this, AddEventReportActivity.class);
-                startActivity(postEventReport);
-            }
-        });
+        FloatingActionButton floatingActionButton = findViewById(R.id.fab);
+        floatingActionButton.setOnClickListener(view -> onLaunchCamera());
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         FirebaseRecyclerAdapter<EventsReport, EventViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<EventsReport, EventViewHolder>
@@ -93,38 +100,8 @@ public class ReportsFeedActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(firebaseRecyclerAdapter);
     }
 
-    public static class EventViewHolder extends RecyclerView.ViewHolder {
-
-        public EventViewHolder(View itemView) {
-            super(itemView);
-            View mView = itemView;
-        }
-
-        public void setTitle(String title) {
-            TextView event_title = (TextView) itemView.findViewById(R.id.report_title);
-            event_title.setText(title);
-        }
-
-        public void setDesc(String desc) {
-            TextView event_description = (TextView) itemView.findViewById(R.id.report_description);
-            event_description.setText(desc);
-        }
-
-        public void setImage(Context context, String image) {
-            ImageView event_image = (ImageView) itemView.findViewById(R.id.report_image);
-            Picasso.with(context).load(image).into(event_image);
-        }
-    }
-
-    public void onReportItemClicked(){}
-
-    public void refreshFeedData(){}
-
-    public void loadNextDataSet(){}
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
@@ -136,5 +113,59 @@ public class ReportsFeedActivity extends AppCompatActivity {
             mAuth.signOut();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onLaunchCamera() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(ReportsFeedActivity.this, new String[]{
+                        Manifest.permission.ACCESS_FINE_LOCATION,
+                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                }, 10);
+                return;
+            }
+
+        mFusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
+            if (location != null) {
+                mLocation = location;
+            }
+        });
+
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = timeStamp + ".png";
+        File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        mImagePath = storageDir.getAbsolutePath() + "/" + imageFileName;
+        File file = new File(mImagePath);
+        Uri outputFileUri = Uri.fromFile(file);
+
+        // A camera draft has been announced **Sirens** CALLING UPON ALL CAMERAS FOR SERVICE!!!!!!
+        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
+        startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            File mImageFile = new File(mImagePath);
+            if (mImageFile.exists()) {
+                if (mLocation != null) {
+                    Intent detailsIntent = new Intent(this, AddEventReportActivity.class);
+                    detailsIntent.putExtra("image", mImageFile.getAbsolutePath());
+                    detailsIntent.putExtra("lat", Double.toString(mLocation.getLatitude()));
+                    detailsIntent.putExtra("lon", Double.toString(mLocation.getLongitude()));
+                    showToast(Double.toString(mLocation.getLatitude()) + " " + Double.toString(mLocation.getLongitude()));
+                    startActivity(detailsIntent);
+                } else {
+                    Intent detailsIntent = new Intent(this, AddEventReportActivity.class);
+                    detailsIntent.putExtra("image", mImageFile.getAbsolutePath());
+                    startActivity(detailsIntent);
+                }
+            }
+        }
+    }
+
+    public void showToast(String text){
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 }

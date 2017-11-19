@@ -2,14 +2,14 @@ package com.theshulmonies.lookowlt.Reports;
 
 import android.graphics.Color;
 
-
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by davidseverns on 11/8/17.
  */
 
-public class EventsReport implements Reportable {
+public class EventsReport implements Serializable, Reportable {
 
     private String reportTitle;
     private String reportDetails;
@@ -20,20 +20,22 @@ public class EventsReport implements Reportable {
     private String eventsTypeMarker;
     private long reportCredibilityScore;
 
-    public EventsReport(){
-
+    public EventsReport() {
         //when report is created score set to 0
-        reportCredibilityScore = 0;
+        //reportCredibilityScore = 0;
+    }
 
-
-
+    public EventsReport(String title, String desc, String image) {
+        reportTitle = title;
+        reportDetails = desc;
+        reportImage = image;
     }
 
     /**
      * this method takes no parameters but serves the purpose of
      * incrementing the reports credibility score
      */
-    @Override
+   // @Override
     public void userUpVote() {
         reportCredibilityScore += 1;
     }
@@ -42,7 +44,7 @@ public class EventsReport implements Reportable {
      * this method takes no parameters but serves the purpose of
      * decrementing the reports credibility score
      */
-    @Override
+    //@Override
     public void userDownVote() {
         reportCredibilityScore -= 1;
     }
@@ -94,9 +96,11 @@ public class EventsReport implements Reportable {
         this.reportDetails = reportDetails;
     }
 
+
     public void sendSpecialReport(){
         specialReport = true;
     }
+
 
     public String getImage() {
         return reportImage;

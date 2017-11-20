@@ -4180,8 +4180,9 @@ public final class R {
     public static final int status_bar_notification_info_overflow=0x7f0e004b;
     public static final int submit_report=0x7f0e004c;
     public static final int take_a_picture=0x7f0e004d;
-    public static final int take_picture=0x7f0e004e;
-    public static final int use_picture=0x7f0e004f;
+    public static final int take_of_your_jacket=0x7f0e004e;
+    public static final int take_picture=0x7f0e004f;
+    public static final int use_picture=0x7f0e0050;
   }
   public static final class style {
     public static final int AlertDialog_AppCompat=0x7f0f0000;

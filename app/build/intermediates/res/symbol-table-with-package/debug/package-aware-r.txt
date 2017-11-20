@@ -1248,8 +1248,9 @@ int string sign_out 0x7f0e004a
 int string status_bar_notification_info_overflow 0x7f0e004b
 int string submit_report 0x7f0e004c
 int string take_a_picture 0x7f0e004d
-int string take_picture 0x7f0e004e
-int string use_picture 0x7f0e004f
+int string take_of_your_jacket 0x7f0e004e
+int string take_picture 0x7f0e004f
+int string use_picture 0x7f0e0050
 int style AlertDialog_AppCompat 0x7f0f0000
 int style AlertDialog_AppCompat_Light 0x7f0f0001
 int style Animation_AppCompat_Dialog 0x7f0f0002

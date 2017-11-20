@@ -36,6 +36,7 @@ public class AddEventReportActivity extends AppCompatActivity  {
     private StorageReference storageReference;
     private Bitmap mReportImageBitmap;
     private String encodedImage;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

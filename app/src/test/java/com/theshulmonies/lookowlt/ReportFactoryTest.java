@@ -20,7 +20,7 @@ import static junit.framework.Assert.assertTrue;
  * This is a jUnit test class to test the ReportFactory and its functionality
  * Created by davidseverns on 11/16/17.
  */
-
+//changes
 public class ReportFactoryTest {
 
     ReportFactory factory;
